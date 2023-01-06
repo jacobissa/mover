@@ -29,7 +29,7 @@ services:
       - /home/pi/docker/mover/source:/app/source
       - /home/pi/docker/mover/target:/app/target
       - /home/pi/docker/mover/logs:/app/logs
-	environment:
+    environment:
       - TZ=Europe/Berlin
       - SLEEP_SCAN=6s
       - SLEEP_MOVE=3s
