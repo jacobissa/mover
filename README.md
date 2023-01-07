@@ -6,11 +6,11 @@ MOVER watches a source directory and moves its content into a target directory
 
 ## Environment Variables
 
-| Variable     | Default | Value            | Description                                                                                                                                                                                                                                          |
-| ------------ | ------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TZ`         | UTC     | `TimeZone`       | Set your time zone to make sure logs rotate at local midnight instead of at UTC midnight. A list of all time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).                                                |
-| `SLEEP_SCAN` | 8s      | `NUMBER[SUFFIX]` | Set the timeout interval between scans.The `NUMBER` may be a positive integer or a floating-point Number. The `SUFFIX` may be `s` for seconds, `m` for minutes, `h` for hours or `d` for days. When no suffix is specified, it defaults to seconds.  |
-| `SLEEP_MOVE` | 4s      | `NUMBER[SUFFIX]` | Set the timeout interval between moves. The `NUMBER` may be a positive integer or a floating-point Number. The `SUFFIX` may be `s` for seconds, `m` for minutes, `h` for hours or `d` for days. When no suffix is specified, it defaults to seconds. |
+| Variable   | Default | Value            | Description                                                                                                                                                                                                                                                |
+| ---------- | ------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TZ`       | UTC     | `TIMEZONE`       | Set your time zone to make sure logs rotate at local midnight instead of at UTC midnight. A list of all time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).                                                      |
+| `PATTERN`  | \*      | `STRING`         | Set a pattern for the filenames. Only the files and folders that match this pattern will be moved. Default is `*` which means everything will be moved. The accepted pattern characters can be found [here](https://wiki.bash-hackers.org/syntax/pattern). |
+| `INTERVAL` | 10s     | `NUMBER[SUFFIX]` | Set the time interval between scans. The `NUMBER` may be a positive integer or a floating-point Number. The `SUFFIX` may be `s` for seconds, `m` for minutes, `h` for hours or `d` for days. When no suffix is specified, it defaults to seconds.          |
 
 ---
 
@@ -31,8 +31,8 @@ services:
       - /home/pi/docker/mover/logs:/app/logs
     environment:
       - TZ=Europe/Berlin
-      - SLEEP_SCAN=6s
-      - SLEEP_MOVE=3s
+      - PATTERN=*
+      - INTERVAL=5s
     restart: unless-stopped
 ```
 

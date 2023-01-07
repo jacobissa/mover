@@ -10,6 +10,6 @@ services:
       - /home/pi/docker/mover/logs:/app/logs
     environment:
       - TZ=Europe/Berlin
-      - SLEEP_SCAN=6s
-      - SLEEP_MOVE=3s
+      - PATTERN=*
+      - INTERVAL=5s
     restart: unless-stopped
